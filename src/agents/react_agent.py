@@ -7,6 +7,14 @@ Observation → repeat until the model emits Final Answer (or max steps).
 
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
+# Allow `python src/agents/react_agent.py` from repo root without PYTHONPATH=.
+_repo_root = Path(__file__).resolve().parents[2]
+if str(_repo_root) not in sys.path:
+    sys.path.insert(0, str(_repo_root))
+
 import os
 import re
 from dataclasses import dataclass, field

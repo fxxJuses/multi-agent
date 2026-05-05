@@ -35,7 +35,9 @@ multi-agent/
 ├─ .env.example          # 三家 LLM 的环境变量模板
 ├─ .gitignore
 ├─ requirements.txt      # 仅 openai + python-dotenv
-├─ docs/                 # 预留文档目录
+├─ docs/                 # 教程与章节文档
+├─ example/              # 与文档配套、可独立运行的小脚本（非核心 Agent 代码）
+│  └─ mcp-jsonrpc-concept-demo.py
 └─ src/
    ├─ __init__.py
    ├─ main.py            # 统一 CLI 入口（python -m src.main --agent ...）
@@ -46,11 +48,13 @@ multi-agent/
    ├─ llm/
    │  ├─ llm.py                    # OpenAI 兼容 LLM 客户端封装（支持流式）
    │  └─ qwen_stream_demo.py       # 流式调用 demo（Qwen）
+   ├─ mcp/
+   │  └─ client.py                 # 最小 MCP stdio client（initialize / tools/list / tools/call）
    └─ tools/
       └─ basic_tools.py            # calculator + fake_search（演示用）
 ```
 
-> 设计原则：**所有 Python 代码只放在 `src/`**，根目录保持干净（只有配置文件与文档）。
+> 设计原则：**Agent 与范式实现只放在 `src/`**；`example/` 仅放与 `docs/` 配套的演示脚本。根目录保持干净（配置文件与文档）。
 
 ---
 
